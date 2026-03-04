@@ -19,6 +19,18 @@ Arquivo principal:
 Artigo EBAP - Celeridade das Contratações Públicas Federais/
 └── Artigo Junção – Última Revisão – GitHub.ipynb
 
+## Estrutura do Projeto
+
+repository
+│
+├── notebook/
+│   └── análise_celeridade_contratacoes.ipynb
+│
+├── data/
+│   └── disponível no Google Drive
+│
+└── README.md
+
 ## Dados da Pesquisa
 
 Devido ao tamanho dos arquivos, os dados utilizados na pesquisa estão disponíveis separadamente no Google Drive:
