@@ -59,3 +59,13 @@ permitindo a **reprodução integral dos procedimentos analíticos utilizados no
 
 Rafael Carvalho dos Santos  
 Mestrado Profissional em Administração Pública – IDP
+
+## Citação
+
+Caso utilize este material em pesquisas ou trabalhos acadêmicos, favor citar o artigo correspondente:
+
+Santos, R. C. (2026). Celeridade das contratações públicas federais: uma análise empírica com dados administrativos. Mestrado Profissional em Administração Pública – IDP.
+
+## Licença
+
+Este repositório é disponibilizado apenas para fins acadêmicos e de pesquisa.
