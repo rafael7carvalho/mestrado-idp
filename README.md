@@ -2,6 +2,10 @@
 
 Este repositório contém o notebook utilizado na análise empírica do artigo sobre **celeridade das contratações públicas federais**, desenvolvido no âmbito do Mestrado Profissional em Administração Pública do IDP.
 
+## Notebook da análise
+
+[📊 Abrir notebook da análise](Artigo%20EBAP%20-%20Celeridade%20das%20Contratações%20Públicas%20Federais/Artigo%20Junção%20–%20Última%20Revisão%20–%20GitHub.ipynb)
+
 ## Conteúdo do Repositório
 
 - Notebook com preparação, tratamento e análise dos dados utilizados no estudo.
