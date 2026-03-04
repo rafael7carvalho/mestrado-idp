@@ -6,6 +6,10 @@ Este repositório contém o notebook utilizado na análise empírica do artigo s
 
 📊 [Abrir notebook da análise no GitHub](https://github.com/rafael7carvalho/mestrado-idp/blob/main/Artigo%20EBAP%20-%20Celeridade%20das%20Contrata%C3%A7%C3%B5es%20P%C3%BAblicas%20Federais/Artigo%20Jun%C3%A7%C3%A3o%20-%20%C3%9Altima%20Revis%C3%A3o%20-%20GitHub.ipynb)
 
+## Executar o notebook
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/rafael7carvalho/mestrado-idp/blob/main/Artigo%20EBAP%20-%20Celeridade%20das%20Contrata%C3%A7%C3%B5es%20P%C3%BAblicas%20Federais/Artigo%20Jun%C3%A7%C3%A3o%20-%20%C3%9Altima%20Revis%C3%A3o%20-%20GitHub.ipynb)
+
 ## Conteúdo do Repositório
 
 - Notebook com preparação, tratamento e análise dos dados utilizados no estudo.
