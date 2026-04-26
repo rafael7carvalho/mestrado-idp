@@ -1,0 +1,1524 @@
+app:
+  description: 'Avaliar se um DFD-PCA está adequadamente preenchido, de acordo com:
+
+
+    - modelo STM;
+
+    - Lei 14.133/21;
+
+    - boas práticas de planejamento da contratação.'
+  icon: stopwatch
+  icon_background: '#D1E9FF'
+  icon_type: emoji
+  mode: workflow
+  name: Analista de DFD
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/huggingface_tei:0.1.4@4618e2c1d7697982f9ecc87b050ea99e0a132aeedc3bc3bbc357f23dbb7479b3
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.3.5@dcc15b5847dbe38c64c2a9fdc1ea2d46466b7028eb4766b251bc363b0eec3af3
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 9acbdc23-95f6-4c7d-a691-7944def3559c
+    name: mail_to
+    selector:
+    - env
+    - mail_to
+    value: rafael7carvalho@gmail.com
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1775780865370-source-1775799089416-target
+      selected: false
+      source: '1775780865370'
+      sourceHandle: source
+      target: '1775799089416'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1775799902875-source-1775800568393-target
+      selected: false
+      source: '1775799902875'
+      sourceHandle: source
+      target: '1775800568393'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: end
+      id: 1775802253766-source-1775805173618-target
+      selected: false
+      source: '1775802253766'
+      sourceHandle: source
+      target: '1775805173618'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1775799089416-source-1775850771535-target
+      selected: false
+      source: '1775799089416'
+      sourceHandle: source
+      target: '1775850771535'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1775799201277-source-1775799902875-target
+      source: '1775799201277'
+      sourceHandle: source
+      target: '1775799902875'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1775800568393-source-1775913063805-target
+      source: '1775800568393'
+      sourceHandle: source
+      target: '1775913063805'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: agent
+      id: 1775913063805-source-1775802253766-target
+      source: '1775913063805'
+      sourceHandle: source
+      target: '1775802253766'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1775850771535-source-1776840847075-target
+      source: '1775850771535'
+      sourceHandle: source
+      target: '1776840847075'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 1776840847075-source-1775799201277-target
+      source: '1776840847075'
+      sourceHandle: source
+      target: '1775799201277'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Entrada DFD
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: Documento de Formalização de Demanda (DFD)
+          options: []
+          placeholder: ''
+          required: true
+          type: file
+          variable: dfd_doc
+      height: 109
+      id: '1775780865370'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_array_file: false
+        selected: false
+        title: Leitor de DFD
+        type: document-extractor
+        variable_selector:
+        - '1775780865370'
+        - dfd_doc
+      height: 104
+      id: '1775799089416'
+      position:
+        x: 382
+        y: 282
+      positionAbsolute:
+        x: 382
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - DoFMV8pn+B5PkTi2dQnUSw9jGeRTJOsBE9OVjL1cnhxXb+LTz+C72nYTohjOyf7n
+        - 13h+1Fiehbgf6Q5F+faV89Oy3Kyg0Pul6ICeOlrYXWVzL6oEOX/ke/nexSwU/pRy
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: BAAI/bge-reranker-v2-m3
+            provider: langgenius/huggingface_tei/huggingface_tei
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1775850771535'
+        - text
+        retrieval_mode: multiple
+        selected: false
+        title: Lei 14.133/21 e Modelo
+        type: knowledge-retrieval
+      height: 118
+      id: '1775799201277'
+      position:
+        x: 1291.304646335051
+        y: 282
+      positionAbsolute:
+        x: 1291.304646335051
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1775799201277'
+          - result
+        model:
+          completion_params:
+            temperature: 0
+            top_p: 0.1
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: c654a737-5181-4408-94f1-b2e254fd65b2
+          role: system
+          text: "Você é um Analista Técnico especializado em Documentos de Formalização\
+            \ de Demanda (DFD) no contexto de contratações públicas.\n\nSua função\
+            \ é avaliar tecnicamente o DFD com base em:\n\n1. Lei nº 14.133/2021 (base\
+            \ legal obrigatória)\n2. Modelo institucional de DFD PCA do STM (padrão\
+            \ de estrutura e preenchimento)\n\nREGRAS OBRIGATÓRIAS:\n\n- NUNCA confie\
+            \ apenas no seu conhecimento interno.\n- SEMPRE utilize prioritariamente\
+            \ os contextos fornecidos:\n  - contexto legal da Lei 14.133/21\n  - contexto\
+            \ do modelo STM DFD PCA\n\nFLUXO DE ANÁLISE:\n\n1. Analise o DFD estruturado\
+            \ recebido.\n2. Compare os campos preenchidos com:\n   - exigências legais;\n\
+            \   - padrão institucional STM.\n3. Identifique:\n   - campos obrigatórios\
+            \ ausentes;\n   - informações vagas ou genéricas;\n   - inconsistências\
+            \ entre campos;\n   - ausência de justificativa adequada;\n   - falhas\
+            \ de planejamento;\n   - divergência com o modelo STM.\n\nCRITÉRIOS DE\
+            \ ANÁLISE:\n\n- clareza do objeto da contratação\n- adequação da justificativa\
+            \ da necessidade\n- coerência do quantitativo\n- adequação de prazo /\
+            \ cronograma\n- critérios de sustentabilidade e acessibilidade\n- alinhamento\
+            \ com planejamento institucional\n- adequação da equipe de planejamento\n\
+            - consistência geral do documento\n\nFORMATO DE SAÍDA:\n\nPara cada problema\
+            \ encontrado:\n- campo afetado\n- descrição objetiva do problema\n- gravidade:\
+            \ baixa / média / alta\n- base legal aplicável (artigo + trecho), quando\
+            \ houver\n- divergência em relação ao modelo STM, quando houver\n- recomendação\
+            \ objetiva de ajuste\n\nAo final:\n- classificação geral:\n  - ADEQUADO\n\
+            \  - PARCIAL\n  - INADEQUADO\n\n- resumo executivo curto (máx. 5 linhas)\n\
+            \nIMPORTANTE:\n- Seja técnico, objetivo e sucinto.\n- Não invente informações.\n\
+            - Toda a análise deve ter no máximo 5000 tokens."
+        - id: ec003384-e10d-424c-88e9-ab017cf0453c
+          role: user
+          text: '--------------------------
+
+            CONTEXTO LEGAL E MODELO DO PCA
+
+            {{#context#}}
+
+            ---------------------------
+
+            DFD ESTRUTURADO:
+
+            {{#1776840847075.result_text#}}
+
+            ---------------------------
+
+            Analise tecnicamente o DFD com base:
+
+            - na Lei 14.133/2021;
+
+            - no modelo institucional STM de DFD PCA.
+
+
+            Você deve analisar exclusivamente os campos do JSON estruturado fornecido.
+
+
+            Considere um campo como preenchido quando houver conteúdo textual no valor
+            do campo correspondente.
+
+
+            Não reavalie o texto bruto do DFD.
+
+            Não considerar como vazio um campo que possua conteúdo no JSON estruturado.
+
+
+            REGRA DE INTERPRETAÇÃO DO DFD:
+
+
+            Considere que os campos do DFD podem estar estruturados da seguinte forma:
+
+
+            "TÍTULO DO CAMPO:"
+
+            conteúdo na linha seguinte
+
+
+            Exemplo:
+
+            "OBJETO DA CONTRATAÇÃO:"
+
+            "Aquisição de suprimentos..."
+
+
+            Neste caso:
+
+            - o campo DEVE ser considerado preenchido;
+
+            - o conteúdo imediatamente abaixo pertence ao campo;
+
+            - não classificar como vazio se houver texto subsequente antes do próximo
+            item numerado.
+
+
+            Somente classificar como não preenchido se:
+
+            - não houver conteúdo após o título;
+
+            - ou o conteúdo for irrelevante (ex: "a definir", "xxx", etc).
+
+
+            Para cada campo obrigatório do modelo STM, verifique:
+
+            - se está preenchido;
+
+            - se está claro;
+
+            - se está coerente;
+
+            - se atende à finalidade da contratação.
+
+
+            Itens mínimos:
+
+            1. ID da contratação
+
+            2. Objeto da contratação
+
+            3. Necessidade e justificativa
+
+            4. Declarações (almoxarifado / contrato vigente)
+
+            5. Quantidade a ser contratada
+
+            6. Data prevista da contratação
+
+            7. Previsão de data para início da prestação dos serviços ou recebimento
+            do objeto
+
+            8. Resultados esperados
+
+            9. Identificação da área requisitante
+
+            10. Alinhamento do planejamento estratégico
+
+            11. Adequação orçamentária
+
+            12. Encaminhamento ao Diretor-Geral
+
+            13. Autorização do Diretor-Geral
+
+
+            Para cada campo:
+
+            - verificar existência
+
+            - verificar preenchimento
+
+            - verificar clareza
+
+
+            Não escolher subconjuntos.
+
+            Não omitir campos.
+
+
+            Para cada inconsistência:
+
+            - campo_afetado
+
+            - problema identificado
+
+            - gravidade (baixa/média/alta)
+
+            - fundamento legal
+
+            - divergência do modelo STM
+
+            - orientação objetiva de preenchimento (como deve ser escrito / ajustado)
+
+
+            Analise obrigatoriamente, nesta ordem:
+
+            1. id_contratacao
+
+            2. objeto_contratacao
+
+            3. necessidade_justificativa
+
+            4. declaracoes
+
+            5. criterios_sustentabilidade_acessibilidade
+
+            6. quantidade_contratada
+
+            7. data_prevista_contratacao
+
+            8. data_inicio_prestacao_ou_recebimento
+
+            9. resultados_esperados
+
+            10. area_requisitante
+
+            11. alinhamento_planejamento_estrategico
+
+            12. adequacao_orcamentaria
+
+            13. equipe_planejamento
+
+            14. encaminhamento_autorizacao
+
+
+            Ao final:
+
+            - classificação geral: ADEQUADO / PARCIAL / INADEQUADO
+
+            - resumo executivo curto'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              campos_ausentes_ou_nao_preenchidos:
+                items:
+                  type: string
+                type: array
+              classificacao_geral:
+                enum:
+                - ADEQUADO
+                - PARCIAL
+                - INADEQUADO
+                type: string
+              problemas_encontrados:
+                items:
+                  additionalProperties: false
+                  properties:
+                    base_legal:
+                      type: string
+                    campo_afetado:
+                      type: string
+                    descricao_problema:
+                      type: string
+                    divergencia_modelo_STM:
+                      type: string
+                    gravidade:
+                      enum:
+                      - baixa
+                      - media
+                      - alta
+                      type: string
+                    orientacao_preenchimento:
+                      type: string
+                  required:
+                  - campo_afetado
+                  - descricao_problema
+                  - gravidade
+                  - base_legal
+                  - divergencia_modelo_STM
+                  - orientacao_preenchimento
+                  type: object
+                type: array
+              resumo_executivo:
+                type: string
+            required:
+            - campos_ausentes_ou_nao_preenchidos
+            - problemas_encontrados
+            - classificacao_geral
+            - resumo_executivo
+            type: object
+        structured_output_enabled: true
+        title: Analista Técnico
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1775799902875'
+      position:
+        x: 1616.9275782193045
+        y: 282
+      positionAbsolute:
+        x: 1616.9275782193045
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1775799201277'
+          - result
+        model:
+          completion_params:
+            temperature: 0
+            top_p: 0.3
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 95cfa576-3641-40e1-a5b7-faaafbd5e97b
+          role: system
+          text: 'Você é um Auditor de Risco em contratações públicas.
+
+
+            Seu papel NÃO é reavaliar tecnicamente o DFD, mas identificar riscos práticos,
+            jurídicos e operacionais com base na Lei 14.133/21.
+
+
+            NUNCA confie apenas no seu conhecimento interno.
+
+            Sempre utilize o CONTEXTO LEGAL fornecido como base.
+
+
+            Fluxo obrigatório:
+
+            1. Identifique riscos reais (não teóricos)
+
+            2. Relacione cada risco a uma falha no DFD
+
+            3. Fundamente com base legal
+
+
+            Critérios de risco:
+
+            - Risco de julgamento subjetivo
+
+            - Risco de inviabilidade técnica
+
+            - Risco de impugnação/licitação fracassada
+
+            - Risco contratual (penalidades frágeis)
+
+            - Risco de segurança da informação/LGPD
+
+
+            Para cada risco:
+
+            - relacione o risco ao campo específico do DFD que gerou o problema;
+
+            - explique impacto prático na contratação;
+
+            - indique prioridade de correção (imediata / alta / média / baixa).
+
+            - Descreva o risco em uma frase (sucinto)
+
+            - Cite a lei (artigo + trecho relevante)
+
+            - Explique a causa no DFD
+
+            - Explique a consequência prática
+
+
+            Classificação final:
+
+            - ALTO → compromete a licitação ou pode gerar judicialização
+
+            - MÉDIO → pode gerar problemas operacionais
+
+            - BAIXO → impacto limitado
+
+
+            Se não houver risco relevante, diga explicitamente: "Sem riscos relevantes
+            identificados".
+
+
+            Toda a análise deve conter no máximo 5000 tokens.'
+        - id: 31fd6ce1-5ed1-4e8a-b24e-12f179b1f24d
+          role: user
+          text: '--------------------------
+
+            CONTEXTO LEGAL:
+
+            {{#context#}}
+
+            --------------------------
+
+            ANÁLISE TÉCNICA:
+
+            {{#1775799902875.structured_output#}}
+
+            --------------------------
+
+            DFD ESTRUTURADO:
+
+            {{#1775850771535.structured_output#}}
+
+            --------------------------
+
+            Identifique e descreva os principais riscos associados a este DFD.
+
+            Classifique o risco geral como: ALTO, MÉDIO ou BAIXO.'
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              nivel_risco_geral:
+                enum:
+                - BAIXO
+                - MEDIO
+                - ALTO
+                type: string
+              riscos:
+                items:
+                  properties:
+                    campo_relacionado:
+                      type: string
+                    consequencia:
+                      type: string
+                    descricao:
+                      type: string
+                    fundamento_legal:
+                      type: string
+                    nivel:
+                      enum:
+                      - BAIXO
+                      - MEDIO
+                      - ALTO
+                      type: string
+                    prioridade_correcao:
+                      enum:
+                      - imediata
+                      - alta
+                      - media
+                      - baixa
+                      type: string
+                    tipo_risco:
+                      type: string
+                  required:
+                  - campo_relacionado
+                  - tipo_risco
+                  - nivel
+                  - descricao
+                  - fundamento_legal
+                  - consequencia
+                  - prioridade_correcao
+                  type: object
+                type: array
+            required:
+            - riscos
+            - nivel_risco_geral
+            type: object
+        structured_output_enabled: true
+        title: Auditor de Risco
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1775800568393'
+      position:
+        x: 1936.175280245988
+        y: 282
+      positionAbsolute:
+        x: 1936.175280245988
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        agent_parameters:
+          context:
+            type: variable
+            value:
+            - '1775913063805'
+            - context
+          instruction:
+            type: constant
+            value: 'Você é um agente institucional responsável pelo envio de e-mails
+              formais no âmbito do STM.
+
+
+              Você possui acesso à ferramenta:
+
+              send_email(to, subject, body)
+
+
+              Sua função é decidir se deve enviar e-mail com base na análise técnica
+              e na análise de risco de um Documento de Formalização de Demanda (DFD).
+
+
+              REGRAS DE DECISÃO:
+
+
+              1. Enviar e-mail se:
+
+              - nivel_risco_geral = "ALTO"
+
+              - nivel_risco_geral = "MEDIO"
+
+              - nivel_risco_geral = "BAIXO" e houver riscos
+
+
+              2. Não enviar e-mail se:
+
+              - nivel_risco_geral = "BAIXO" e não houver riscos
+
+
+              REGRA CRÍTICA DE EXECUÇÃO:
+
+              - Se a decisão for enviar e-mail, você DEVE obrigatoriamente chamar
+              a ferramenta send_email.
+
+              - Não é permitido apenas redigir o e-mail em texto.
+
+              - Não é permitido responder com assunto e corpo sem chamar a ferramenta.
+
+              - Só responda "Email enviado com sucesso" após chamar a ferramenta send_email
+              com sucesso.
+
+              - Se não for necessário enviar, responda exatamente: "Nenhum email necessário".
+
+              - Se houver falha na ferramenta, responda exatamente: "Erro ao enviar
+              email: <detalhe>".
+
+
+              REGRAS DE ESCRITA DO E-MAIL:
+
+
+              O e-mail deve ter qualidade de parecer técnico institucional.
+
+
+              Deve obrigatoriamente:
+
+
+              1. Identificar claramente:
+
+              - classificação geral do DFD
+
+              - nível de risco
+
+
+              2. Detalhar problemas de forma específica:
+
+              - citar explicitamente os principais campos afetados
+
+              - evitar expressões genéricas como "entre outros"
+
+              - agrupar problemas por relevância
+
+
+              3. Para cada problema relevante:
+
+              - indicar o que está incorreto ou ausente
+
+              - explicar por que é obrigatório (base legal e/ou modelo STM)
+
+              - orientar como corrigir de forma prática
+
+
+              4. Descrever riscos de forma analítica:
+
+              - relacionar risco com falha identificada
+
+              - explicar impacto no processo (legalidade, transparência, eficiência)
+
+
+              5. Orientar ação corretiva clara:
+
+              - revisão completa do DFD
+
+              - priorização dos itens críticos
+
+
+              6. Linguagem:
+
+              - formal
+
+              - técnica
+
+              - objetiva
+
+              - sem placeholders
+
+              - sem termos genéricos
+
+              - sem "entre outros"
+
+
+              8. Use prioritariamente as informações estruturadas recebidas:
+
+              - problemas_encontrados
+
+              - campos_ausentes_ou_nao_preenchidos
+
+              - riscos
+
+
+              Sempre que possível:
+
+              - cite campos nominalmente
+
+              - utilize as orientações de preenchimento
+
+
+              9. Assinatura obrigatória (fixa):
+
+              Atenciosamente,
+
+              Equipe de Apoio às Contratações – STM
+
+
+              REGRA CRÍTICA SOBRE BASE LEGAL:
+
+
+              - É PROIBIDO inventar artigos, incisos ou parágrafos.
+
+              - Só citar base legal se ela estiver explicitamente presente nos dados
+              de entrada.
+
+              - Caso não haja referência legal clara, não citar artigo específico.
+
+              - Nunca utilizar placeholders como "Artigo X" ou "Parágrafo Y".
+
+
+              REGRA DE CONTROLE DE EXECUÇÃO:
+
+
+              - Você deve tomar apenas UMA decisão por execução.
+
+              - É PROIBIDO enviar mais de um e-mail.
+
+              - Mesmo que existam múltiplas análises, consolide tudo em um único e-mail.
+
+              - Nunca chame a ferramenta send_email mais de uma vez.
+
+
+              A análise técnica e a análise de risco devem ser tratadas como uma única
+              análise consolidada.
+
+
+              O e-mail deve integrar:
+
+              - problemas técnicos
+
+              - riscos identificados
+
+
+              Nunca gerar e-mails separados por tipo de análise.
+
+
+              ESTRUTURA DO E-MAIL:
+
+              - saudação
+
+              - resultado da análise
+
+              - principais problemas
+
+              - principais riscos
+
+              - ação necessária
+
+              - encerramento institucional
+
+
+              ASSINATURA OBRIGATÓRIA DO E-MAIL:
+
+
+              Atenciosamente,
+
+              Equipe de Apoio às Contratações – STM
+
+
+              É proibido usar placeholders como:
+
+              - [Seu Nome]
+
+              - [Seu Cargo]
+
+              - [Nome]
+
+              - [Cargo]
+
+
+              IMPORTANTE (REGRA CRÍTICA):
+
+
+              Se as condições de envio forem atendidas, você DEVE obrigatoriamente:
+
+
+              1. NÃO retornar texto simples
+
+              2. NÃO apenas escrever o e-mail
+
+              3. CHAMAR a ferramenta send_email
+
+
+              A resposta final DEVE ser exclusivamente a chamada da ferramenta.'
+          maximum_iterations:
+            type: constant
+            value: 1
+          model:
+            type: constant
+            value:
+              completion_params:
+                temperature: 0.5
+                top_p: 0.6
+              mode: chat
+              model: gpt-3.5-turbo
+              model_type: llm
+              provider: langgenius/openai/openai
+              type: model-selector
+          query:
+            type: constant
+            value: '-------------------------------
+
+              DESTINATÁRIO:
+
+              {{#env.mail_to#}}
+
+              -------------------------------
+
+
+              ANÁLISE TÉCNICA DO DFD:
+
+              {{#1775799902875.structured_output#}}
+
+
+              -------------------------------
+
+              ANÁLISE DE RISCO:
+
+              {{#1775800568393.structured_output#}}
+
+
+              -------------------------------
+
+              CONTEXTO:
+
+              {{#1775913063805.context#}}
+
+
+              -------------------------------
+
+              TAREFA:
+
+
+              Com base nas análises acima:
+
+
+              1. Verifique o nível de risco geral.
+
+              2. Decida se deve ou não enviar e-mail conforme as regras definidas.
+
+
+              Se NÃO for necessário enviar:
+
+              - responda exatamente: "Nenhum email necessário"
+
+
+              Se for necessário DEVE enviar:
+
+
+              Elabore um e-mail formal que:
+
+
+              - informe claramente o resultado da análise (adequado, parcial ou inadequado);
+
+              - destaque os principais problemas identificados no DFD;
+
+              - aponte os campos ausentes, incompletos ou inadequados;
+
+              - explique o que precisa ser corrigido ou complementado;
+
+              - indique, sempre que possível, o motivo da exigência com base na Lei
+              14.133/2021 e no modelo institucional do STM;
+
+              - destaque os riscos identificados e suas consequências práticas;
+
+              - oriente de forma objetiva as ações necessárias para correção;
+
+
+              O e-mail deve:
+
+              - ser claro, direto e profissional;
+
+              - não conter placeholders;
+
+              - não inventar informações;
+
+              - ser curto (máximo de 15 linhas);
+
+              - seguir a estrutura definida nas instruções do agente.
+
+
+              Por fim:
+
+              - gerar um assunto objetivo e compatível com o nível de risco;
+
+              - chamar a ferramenta send_email corretamente com os parâmetros preenchidos.
+
+
+              IMPORTANTE:
+
+
+              Se o e-mail já foi enviado nesta execução, não enviar novamente.
+
+
+              Considere que apenas UMA chamada de send_email é permitida por execução.'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: "\n    Sends an email using the Gmail API.\n\n    Args:\n\
+                  \        to: The email address of the recipient.\n        subject:\
+                  \ The subject of the email.\n        body: The body content of the\
+                  \ email.\n    "
+              parameters:
+                body:
+                  auto: 1
+                  value: null
+                subject:
+                  auto: 1
+                  value: null
+                to:
+                  auto: 1
+                  value: null
+              provider_name: gmail-mcp
+              provider_show_name: Gmail MCP Server
+              settings: {}
+              tool_description: "\n    Sends an email using the Gmail API.\n\n   \
+                \ Args:\n        to: The email address of the recipient.\n       \
+                \ subject: The subject of the email.\n        body: The body content\
+                \ of the email.\n    "
+              tool_label: send_email
+              tool_name: send_email
+              type: mcp
+        agent_strategy_label: FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: langgenius/agent/agent
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: {}
+        plugin_unique_identifier: langgenius/agent:0.0.34@4b41a374567eb7cb226ee2f851513794566956008f1166c63205efc921be72d8
+        selected: false
+        title: Agente de E-mail
+        tool_node_version: '2'
+        type: agent
+      height: 188
+      id: '1775802253766'
+      position:
+        x: 2589.184460363839
+        y: 282
+      positionAbsolute:
+        x: 2589.184460363839
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1775799902875'
+          - structured_output
+          value_type: object
+          variable: out_tecnico
+        - value_selector:
+          - '1775800568393'
+          - structured_output
+          value_type: object
+          variable: out_risco
+        - value_selector:
+          - '1775802253766'
+          - text
+          value_type: string
+          variable: out_email
+        selected: false
+        title: Resumo do Processo
+        type: end
+      height: 140
+      id: '1775805173618'
+      position:
+        x: 2934.8000743500347
+        y: 282
+      positionAbsolute:
+        x: 2934.8000743500347
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1775799089416'
+          - text
+        model:
+          completion_params:
+            temperature: 0
+            top_p: 0.3
+          mode: chat
+          name: gpt-3.5-turbo
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 1db8d6b2-418e-4897-adef-f67098df7dd6
+          role: system
+          text: "Você é um especialista em análise documental de processos de contratação\
+            \ pública do STM.\n\nSua tarefa é ler o texto extraído de um Documento\
+            \ de Formalização de Demanda (DFD) previsto no PCA e converter o conteúdo\
+            \ em estrutura organizada.\n\nConsidere como referência o modelo STM de\
+            \ DFD-PCA, que normalmente contém os seguintes campos:\n\n1. id_contratacao\n\
+            2. objeto_contratacao\n3. necessidade_justificativa\n4. declaracao_almoxarifado\n\
+            5. declaracao_contrato_ata_vigente\n6. criterios_sustentabilidade_acessibilidade\n\
+            7. quantidade_contratada\n8. data_prevista_contratacao\n9. data_inicio_prestacao_ou_recebimento\n\
+            10. resultados_esperados\n11. area_requisitante\n12. alinhamento_planejamento_estrategico\n\
+            13. adequacao_orcamentaria\n14. equipe_planejamento\n15. autorizacao_diretor_geral\n\
+            \nRegras:\n- Extraia apenas informações explicitamente presentes no texto.\n\
+            - Não invente conteúdo.\n- Se um campo não estiver presente ou não puder\
+            \ ser identificado, retorne null.\n- Preserve o texto essencial do campo,\
+            \ sem resumir excessivamente.\n- Se houver campos com marcações em branco\
+            \ do modelo (ex.: “informe aqui...”), considere isso como campo não preenchido.\n\
+            - Retorne somente JSON válido.\n- Não adicione explicações fora do JSON.\n\
+            \nEstrutura esperada:\n\n{\n  \"tipo_documento\": \"DFD_PCA\",\n  \"id_contratacao\"\
+            : null,\n  \"objeto_contratacao\": null,\n  \"necessidade_justificativa\"\
+            : null,\n  \"declaracao_almoxarifado\": null,\n  \"declaracao_contrato_ata_vigente\"\
+            : null,\n  \"criterios_sustentabilidade_acessibilidade\": null,\n  \"\
+            quantidade_contratada\": null,\n  \"data_prevista_contratacao\": null,\n\
+            \  \"data_inicio_prestacao_ou_recebimento\": null,\n  \"resultados_esperados\"\
+            : null,\n  \"area_requisitante\": null,\n  \"alinhamento_planejamento_estrategico\"\
+            : {\n    \"objetivo\": null,\n    \"iniciativa\": null\n  },\n  \"adequacao_orcamentaria\"\
+            : {\n    \"programa_trabalho\": null\n  },\n  \"equipe_planejamento\"\
+            : {\n    \"integrante_demandante\": {\n      \"nome\": null,\n      \"\
+            telefone\": null,\n      \"email\": null\n    },\n    \"integrante_tecnico\"\
+            : {\n      \"nome\": null,\n      \"telefone\": null,\n      \"email\"\
+            : null\n    },\n    \"integrante_administrativo\": {\n      \"nome\":\
+            \ null,\n      \"telefone\": null,\n      \"email\": null\n    }\n  },\n\
+            \  \"autorizacao_diretor_geral\": null,\n  \"campos_ausentes_ou_nao_preenchidos\"\
+            : []\n}\n\nTexto do DFD:\n{{ LEITOR DE DFD.text }}"
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              adequacao_orcamentaria:
+                properties:
+                  programa_trabalho:
+                    type: string
+                required:
+                - programa_trabalho
+                type: object
+              alinhamento_planejamento_estrategico:
+                properties:
+                  iniciativa:
+                    type: string
+                  objetivo:
+                    type: string
+                required:
+                - objetivo
+                - iniciativa
+                type: object
+              area_requisitante:
+                type: string
+              autorizacao_diretor_geral:
+                type: string
+              campos_ausentes_ou_nao_preenchidos:
+                items:
+                  type: string
+                type: array
+              criterios_sustentabilidade_acessibilidade:
+                type: string
+              data_inicio_prestacao_ou_recebimento:
+                type: string
+              data_prevista_contratacao:
+                type: string
+              declaracao_almoxarifado:
+                type: string
+              declaracao_contrato_ata_vigente:
+                type: string
+              equipe_planejamento:
+                properties:
+                  integrante_administrativo:
+                    properties:
+                      email:
+                        type: string
+                      nome:
+                        type: string
+                      telefone:
+                        type: string
+                    required:
+                    - nome
+                    - telefone
+                    - email
+                    type: object
+                  integrante_demandante:
+                    properties:
+                      email:
+                        type: string
+                      nome:
+                        type: string
+                      telefone:
+                        type: string
+                    required:
+                    - nome
+                    - telefone
+                    - email
+                    type: object
+                  integrante_tecnico:
+                    properties:
+                      email:
+                        type: string
+                      nome:
+                        type: string
+                      telefone:
+                        type: string
+                    required:
+                    - nome
+                    - telefone
+                    - email
+                    type: object
+                required:
+                - integrante_demandante
+                - integrante_tecnico
+                - integrante_administrativo
+                type: object
+              id_contratacao:
+                type: string
+              necessidade_justificativa:
+                type: string
+              objeto_contratacao:
+                type: string
+              quantidade_contratada:
+                type: string
+              resultados_esperados:
+                type: string
+              tipo_documento:
+                type: string
+            required:
+            - tipo_documento
+            - id_contratacao
+            - objeto_contratacao
+            - necessidade_justificativa
+            - declaracao_almoxarifado
+            - declaracao_contrato_ata_vigente
+            - criterios_sustentabilidade_acessibilidade
+            - quantidade_contratada
+            - data_prevista_contratacao
+            - data_inicio_prestacao_ou_recebimento
+            - resultados_esperados
+            - area_requisitante
+            - alinhamento_planejamento_estrategico
+            - adequacao_orcamentaria
+            - equipe_planejamento
+            - autorizacao_diretor_geral
+            - campos_ausentes_ou_nao_preenchidos
+            type: object
+        structured_output_enabled: true
+        title: Extrator Estruturado DFD
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1775850771535'
+      position:
+        x: 690.5975395538644
+        y: 282
+      positionAbsolute:
+        x: 690.5975395538644
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\nfrom typing import Any, Dict, List\n\n\ndef _normalize(data:\
+          \ Any) -> Dict:\n    if isinstance(data, dict):\n        return data\n \
+          \   if isinstance(data, str):\n        try:\n            loaded = json.loads(data)\n\
+          \            return loaded if isinstance(loaded, dict) else {}\n       \
+          \ except Exception:\n            return {}\n    return {}\n\n\ndef _safe_list(value:\
+          \ Any) -> List:\n    return value if isinstance(value, list) else []\n\n\
+          \ndef _safe_str(value: Any, default: str = \"N/A\") -> str:\n    if value\
+          \ is None:\n        return default\n    if isinstance(value, str):\n   \
+          \     value = value.strip()\n        return value if value else default\n\
+          \    return str(value)\n\n\ndef main(arg1, arg2=None) -> dict:\n    auditoria\
+          \ = _normalize(arg1)\n    analise = _normalize(arg2)\n\n    riscos = _safe_list(auditoria.get(\"\
+          riscos\", []))\n    nivel_geral = _safe_str(auditoria.get(\"nivel_risco_geral\"\
+          , \"N/A\"))\n\n    campos_ausentes = _safe_list(analise.get(\"campos_ausentes_ou_nao_preenchidos\"\
+          , []))\n    problemas = _safe_list(analise.get(\"problemas_encontrados\"\
+          , []))\n    classificacao_geral = _safe_str(analise.get(\"classificacao_geral\"\
+          , \"N/A\"))\n    resumo_executivo = _safe_str(analise.get(\"resumo_executivo\"\
+          , \"\"))\n\n    linhas = []\n    linhas.append(f\"Classificação geral do\
+          \ DFD: {classificacao_geral}\")\n    linhas.append(f\"Nível de risco geral:\
+          \ {nivel_geral}\")\n    linhas.append(f\"Quantidade de campos ausentes:\
+          \ {len(campos_ausentes)}\")\n    linhas.append(f\"Quantidade de problemas\
+          \ encontrados: {len(problemas)}\")\n    linhas.append(f\"Quantidade de riscos\
+          \ identificados: {len(riscos)}\")\n\n    if resumo_executivo and resumo_executivo\
+          \ != \"N/A\":\n        linhas.append(\"\")\n        linhas.append(\"Resumo\
+          \ executivo:\")\n        linhas.append(resumo_executivo)\n\n    if campos_ausentes:\n\
+          \        linhas.append(\"\")\n        linhas.append(\"Campos ausentes ou\
+          \ não preenchidos:\")\n        for campo in campos_ausentes[:10]:\n    \
+          \        linhas.append(f\"- {_safe_str(campo)}\")\n\n    if problemas:\n\
+          \        linhas.append(\"\")\n        linhas.append(\"Principais problemas\
+          \ e orientações:\")\n        for i, p in enumerate(problemas[:5], 1):\n\
+          \            linhas.append(\n                f\"{i}. Campo: {_safe_str(p.get('campo_afetado'))}\
+          \ | \"\n                f\"Gravidade: {_safe_str(p.get('gravidade'))} |\
+          \ \"\n                f\"Problema: {_safe_str(p.get('descricao_problema'))}\
+          \ | \"\n                f\"Orientação: {_safe_str(p.get('orientacao_preenchimento'))}\"\
+          \n            )\n\n    if riscos:\n        linhas.append(\"\")\n       \
+          \ linhas.append(\"Principais riscos:\")\n        for i, r in enumerate(riscos[:5],\
+          \ 1):\n            linhas.append(\n                f\"{i}. Campo: {_safe_str(r.get('campo_relacionado'))}\
+          \ | \"\n                f\"Tipo: {_safe_str(r.get('tipo_risco'))} | \"\n\
+          \                f\"Nível: {_safe_str(r.get('nivel'))} | \"\n          \
+          \      f\"Consequência: {_safe_str(r.get('consequencia'))} | \"\n      \
+          \          f\"Prioridade: {_safe_str(r.get('prioridade_correcao'))}\"\n\
+          \            )\n\n    contexto_email = \"\\n\".join(linhas)\n\n    documents\
+          \ = [\n        {\n            \"title\": \"Contexto consolidado para email\"\
+          ,\n            \"content\": contexto_email,\n            \"metadata\": {\n\
+          \                \"classificacao_geral\": classificacao_geral,\n       \
+          \         \"nivel_risco_geral\": nivel_geral,\n                \"quantidade_campos_ausentes\"\
+          : len(campos_ausentes),\n                \"quantidade_problemas\": len(problemas),\n\
+          \                \"quantidade_riscos\": len(riscos)\n            }\n   \
+          \     }\n    ]\n\n    return {\n        \"context\": documents\n    }"
+        code_language: python3
+        outputs:
+          context:
+            children: null
+            type: array[object]
+        selected: false
+        title: Gerador de Contexto
+        type: code
+        variables:
+        - value_selector:
+          - '1775800568393'
+          - structured_output
+          value_type: object
+          variable: arg1
+        - value_selector:
+          - '1775799902875'
+          - structured_output
+          value_type: object
+          variable: arg2
+      height: 52
+      id: '1775913063805'
+      position:
+        x: 2266.5895251787874
+        y: 282
+      positionAbsolute:
+        x: 2266.5895251787874
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\nimport json\nfrom typing import Dict, List\n\n\ndef normalizar_texto(texto:\
+          \ str) -> str:\n    if not texto:\n        return \"\"\n    texto = texto.replace(\"\
+          \\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\")\n    texto = re.sub(r\"[ \\\
+          t]+\", \" \", texto)\n    texto = re.sub(r\"\\n{3,}\", \"\\n\\n\", texto)\n\
+          \    return texto.strip()\n\n\ndef limpar_conteudo(conteudo: str) -> str:\n\
+          \    if not conteudo:\n        return \"\"\n    conteudo = conteudo.strip(\"\
+          \ :\\n\\t-\")\n    conteudo = re.sub(r\"\\n{2,}\", \"\\n\", conteudo)\n\
+          \    return conteudo.strip()\n\n\ndef encontrar_secao(texto: str, padrao_inicio:\
+          \ str, proximos_padroes: List[str]) -> str:\n    flags = re.IGNORECASE |\
+          \ re.MULTILINE | re.DOTALL\n\n    match_inicio = re.search(padrao_inicio,\
+          \ texto, flags)\n    if not match_inicio:\n        return \"\"\n\n    inicio\
+          \ = match_inicio.end()\n    trecho_restante = texto[inicio:]\n\n    candidatos_fim\
+          \ = []\n    for padrao in proximos_padroes:\n        m = re.search(padrao,\
+          \ trecho_restante, flags)\n        if m:\n            candidatos_fim.append(m.start())\n\
+          \n    if candidatos_fim:\n        fim_relativo = min(candidatos_fim)\n \
+          \       conteudo = trecho_restante[:fim_relativo]\n    else:\n        conteudo\
+          \ = trecho_restante\n\n    return limpar_conteudo(conteudo)\n\n\ndef main(arg1:\
+          \ str, arg2=None) -> Dict:\n    texto = normalizar_texto(arg1)\n\n    padroes\
+          \ = {\n        \"id_contratacao\": r\"(?:^|\\n)\\s*1\\.?\\s*ID\\s+DA\\s+CONTRATA[CÇ][AÃ]O\\\
+          s*:\\s*\",\n        \"objeto_contratacao\": r\"(?:^|\\n)\\s*2\\.?\\s*OBJETO\\\
+          s+DA\\s+CONTRATA[CÇ][AÃ]O\\s*:\\s*\",\n        \"necessidade_justificativa\"\
+          : r\"(?:^|\\n)\\s*3\\.?\\s*NECESSIDADE\\s+E\\s+JUSTIFICATIVA\\s*:\\s*\"\
+          ,\n        \"declaracoes\": r\"(?:^|\\n)\\s*4\\.?\\s*DECLARA[CÇ][OÕ]ES?.*?:\\\
+          s*\",\n        \"criterios_sustentabilidade_acessibilidade\": r\"(?:^|\\\
+          n)\\s*5\\.?\\s*(?:CRIT[EÉ]RIOS?.*SUSTENTABILIDADE.*ACESSIBILIDADE|SUSTENTABILIDADE.*ACESSIBILIDADE)\\\
+          s*:\\s*\",\n        \"quantidade_contratada\": r\"(?:^|\\n)\\s*6\\.?\\s*QUANTIDADE.*?:\\\
+          s*\",\n        \"data_prevista_contratacao\": r\"(?:^|\\n)\\s*7\\.?\\s*DATA\\\
+          s+PREVISTA\\s+DA\\s+CONTRATA[CÇ][AÃ]O\\s*:\\s*\",\n        \"data_inicio_prestacao_ou_recebimento\"\
+          : r\"(?:^|\\n)\\s*8\\.?\\s*DATA\\s+DE\\s+IN[IÍ]CIO.*?(?:PRESTA[CÇ][AÃ]O|RECEBIMENTO).*?:\\\
+          s*\",\n        \"resultados_esperados\": r\"(?:^|\\n)\\s*9\\.?\\s*RESULTADOS\\\
+          s+ESPERADOS\\s*:\\s*\",\n        \"area_requisitante\": r\"(?:^|\\n)\\s*10\\\
+          .?\\s*[ÁA]REA\\s+REQUISITANTE\\s*:\\s*\",\n        \"alinhamento_planejamento_estrategico\"\
+          : r\"(?:^|\\n)\\s*11\\.?\\s*ALINHAMENTO.*PLANEJAMENTO.*ESTRAT[EÉ]GICO\\\
+          s*:\\s*\",\n        \"adequacao_orcamentaria\": r\"(?:^|\\n)\\s*12\\.?\\\
+          s*ADEQUA[CÇ][AÃ]O\\s+OR[CÇ]AMENT[ÁA]RIA\\s*:\\s*\",\n        \"equipe_planejamento\"\
+          : r\"(?:^|\\n)\\s*13\\.?\\s*EQUIPE\\s+DE\\s+PLANEJAMENTO\\s*:\\s*\",\n \
+          \       \"encaminhamento_autorizacao\": r\"(?:^|\\n)\\s*14\\.?\\s*(?:ENCAMINHAMENTO|AUTORIZA[CÇ][AÃ]O|ENCAMINHAMENTO\\\
+          s*/\\s*AUTORIZA[CÇ][AÃ]O)\\s*:\\s*\",\n    }\n\n    ordem = list(padroes.keys())\n\
+          \    resultado = {}\n\n    for i, chave in enumerate(ordem):\n        padrao_inicio\
+          \ = padroes[chave]\n        proximos = [padroes[k] for k in ordem[i + 1:]]\n\
+          \        resultado[chave] = encontrar_secao(texto, padrao_inicio, proximos)\n\
+          \n    campos_nao_identificados = [chave for chave, valor in resultado.items()\
+          \ if not valor]\n\n    resultado_final = {\n        **resultado,\n     \
+          \   \"campos_nao_identificados\": campos_nao_identificados\n    }\n\n  \
+          \  return {\n        \"result_obj\": resultado_final,\n        \"result_text\"\
+          : json.dumps(resultado_final, ensure_ascii=False, indent=2)\n    }"
+        code_language: python3
+        outputs:
+          result_obj:
+            children: null
+            type: object
+          result_text:
+            children: null
+            type: string
+        selected: false
+        title: Código 2
+        type: code
+        variables:
+        - value_selector:
+          - '1775799089416'
+          - text
+          value_type: string
+          variable: arg1
+        - value_selector:
+          - '1775850771535'
+          - structured_output
+          value_type: object
+          variable: arg2
+      height: 52
+      id: '1776840847075'
+      position:
+        x: 991.3046463350511
+        y: 282
+      positionAbsolute:
+        x: 991.3046463350511
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 29.869585745761015
+      y: 68.85421191881824
+      zoom: 0.5379542976301047
+  rag_pipeline_variables: []
