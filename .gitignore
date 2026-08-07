@@ -1,4 +1,6 @@
 *.zip 
 *.csv 
+
+!Avaliação de Políticas Públicas com Dados - Tarefa 2/progresa_completo.csv
 *.xlsx 
 .ipynb_checkpoints/ 
